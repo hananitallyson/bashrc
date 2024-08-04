@@ -14,7 +14,7 @@ red='\[\e[1;31m\]'
 get_git_branch() {
   local branch=$(git symbolic-ref --short HEAD 2>/dev/null)
   if [ -n "$branch" ]; then
-    echo " (\ue0a0 ${branch})"
+    echo " ( ${branch})"
   fi
 }
 
@@ -31,7 +31,7 @@ get_domain() {
 function prompt_command {
   PS1="${bold}${white}\u@$(get_domain)${normal} ${bold}${gray}in${normal} ${bold}${blue}\w${normal}${bold}${green}\$(get_git_branch)${normal}\$ "
 }
-  
+
 # Configurando o prompt PS1
 PROMPT_COMMAND=prompt_command
 
@@ -58,4 +58,9 @@ export HISTCONTROL=ignoredups:erasedups
 export HISTSIZE=10000
 export HISTFILESIZE=10000
 shopt -s histappend
+
+# Carrega git-prompt.sh se disponível
+if [ -f /usr/share/git/completion/git-prompt.sh ]; then
+  . /usr/share/git/completion/git-prompt.sh
+fi
 ```
