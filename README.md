@@ -29,7 +29,7 @@ get_domain() {
 
 # Função para configurar o prompt
 function prompt_command {
-  PS1="${bold}${white}\u@$(get_domain)${normal} ${bold}${gray}in${normal} ${bold}${blue}\w${normal}${bold}${green}\$(get_git_branch)${normal}\n→ "
+  PS1="${bold}${white}\u@$(get_domain)${normal} ${bold}${gray}in${normal} ${bold}${blue}\w${normal}${bold}${green}\$(get_git_branch)${normal}: "
 }
 
 # Configurando o prompt PS1
