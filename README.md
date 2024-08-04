@@ -5,7 +5,7 @@
 get_git_branch() {
   local branch=$(git symbolic-ref --short HEAD 2>/dev/null)
   if [ -n "$branch" ]; then
-    echo " (${branch})"
+    echo " ( ${branch})"
   fi
 }
 
@@ -24,11 +24,19 @@ normal=$(tput sgr0)
 white='\[\033[1;37m\]'
 blue='\[\033[1;34m\]'
 green='\[\033[1;32m\]'
+gray='\[\033[1;30m\]'
 
 # Configurando o prompt PS1
-export PS1="${bold}${white}\u@$(get_domain)${normal} ${bold}${blue}\w${normal}${bold}${green}\$(get_git_branch)${normal}: "
+export PS1="${bold}${white}\u@$(get_domain)${normal} ${bold}${gray}in${normal} ${bold}${blue}\w${normal}${bold}${green}\$(get_git_branch)${normal}: "
+
+# Aliases
+alias ..="cd ../"
+alias ...="cd ../../"
+alias ....="cd ../../../"
+alias .....="cd ../../../../"
 
 # Fonte de cores para verificar a cor
-export CLICOLOR=1
+export CLICOLOR=1 
 export LSCOLORS=ExFxBxDxCxegedabagacad
+
 ```
