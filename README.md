@@ -2,19 +2,19 @@
 
 ```
 # Definindo as cores
-bold=$(tput bold)
-normal=$(tput sgr0)
-white='\[\033[1;37m\]'
-blue='\[\033[1;34m\]'
-green='\[\033[1;32m\]'
-gray='\[\033[1;30m\]'
-red='\[\033[1;31m\]'
+bold='\[\e[1m\]'
+normal='\[\e[0m\]'
+white='\[\e[1;37m\]'
+blue='\[\e[1;34m\]'
+green='\[\e[1;32m\]'
+gray='\[\e[1;30m\]'
+red='\[\e[1;31m\]'
 
 # Função para obter a branch atual do git (se existir)
 get_git_branch() {
   local branch=$(git symbolic-ref --short HEAD 2>/dev/null)
   if [ -n "$branch" ]; then
-    echo " ( ${branch})"
+    echo " (\ue0a0 ${branch})"
   fi
 }
 
@@ -29,9 +29,9 @@ get_domain() {
 
 # Função para configurar o prompt
 function prompt_command {
-  PS1="${bold}${white}\u@$(get_domain)${normal} ${bold}${gray}in${normal} ${bold}${blue}\w${normal}${bold}${green}\$(get_git_branch)${normal}$ "
+  PS1="${bold}${white}\u@$(get_domain)${normal} ${bold}${gray}in${normal} ${bold}${blue}\w${normal}${bold}${green}\$(get_git_branch)${normal}\$ "
 }
-
+  
 # Configurando o prompt PS1
 PROMPT_COMMAND=prompt_command
 
